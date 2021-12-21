@@ -1,0 +1,45 @@
+.slider__bottom-container {
+    padding-bottom: 25px;
+    padding-top:30px;
+}
+
+.slider__bottom-title {
+    position: relative;
+}
+
+.slider__bottom-title::after {
+    position: absolute;
+    content: '';
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #fa5234;
+}
+
+.slider__bottom-text {
+    font-size:2.4rem;
+    font-weight: 500;
+}
+
+
+.slider__bottom-slick {
+
+}
+
+.slider__bottom {
+    margin-top:30px;
+}
+
+.slider__bottom-image {
+    display: flex;
+    justify-content: center;
+}
+
+.slider__bottom-img {
+
+}
+
+.slider__bottom-slick .slick-slider .slick-arrow {
+    display: none !important;
+}
