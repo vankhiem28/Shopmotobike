@@ -1,29 +1,55 @@
 import React from 'react'
-import Slider from "react-slick";
-import {useRef} from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick"
+import {useRef,useEffect} from 'react'
 
-import { FaCheck,FaCartPlus,FaAngleRight,FaAngleLeft,FaAngleDoubleRight } from 'react-icons/fa'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
+import {Link} from 'react-router-dom'
+
+import LoadingBox from './LoadingBox'
+import MessageBox from './MessageBox'
+import {useDispatch, useSelector} from 'react-redux'
+import {FaCartPlus,FaAngleRight,FaAngleLeft,FaAngleDoubleRight } from 'react-icons/fa'
 
 import '../css/Grid.css'
 import '../css/Product.css'
+import { listProducts } from '../actions/ProductActions'
 
-import pdnew1 from '../img/pdnew1.jpg'
+
 
 function Product() {
-
     const sliderProductNews =useRef()
     const sliderProductMostViewer =useRef()
-
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-
       }
+      const dispatch =useDispatch()
+      const productList = useSelector((state) => state.productList)
+      const {loading, error, products} = productList
+      console.log(error);
+    useEffect(() => {
+        // const fecthData = async () => {
+        //     try {
+        //         setLoading(true)
+        //         const {data} = await axios.get('http://localhost:5000/api/productsHome')
+        //         setLoading(false)
+        //         setProducts(data)
+        //     } catch(err) {
+        //         setError(err.message)
+        //         setLoading(false)
+        //     }
+        // }
+        // fecthData()
+
+        dispatch(listProducts());
+
+    }, [])
+
     return (
         <React.Fragment>
             <div className="product__container">
@@ -42,74 +68,35 @@ function Product() {
                         {/* <div className="col l-2-4"> */}
                         <div className="product__item-slick">
                             <Slider ref={sliderProductNews} {...settings}>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src={pdnew1} alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/05/dia-nhom-probike-7075-a9-cho-exciter-42t-products-1242.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2021/06/vo-dunlop-8090-16-d307-products-1530.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/11/nhot-maxima-full-syn-10w40-products-1317.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
+                                {
+                                loading ? 
+                                    <LoadingBox/>
+                                    :error ? 
+                                    <MessageBox variant='danger' >{error}</MessageBox>
+                                    :
+                                    products.map(product =>(
+                                        <div className="product__item">
+                                            <Link className="product__item-router" to={`/product/${product._id}`}>
+                                                <div className="product__item-img">
+                                                    <img src={product.image} alt="" />
+                                                </div>
+                                                <div className="product__item-text">
+                                                    <h3 className="product__item-text-title">{product.name}</h3>
+                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                </div>
+                                            </Link>
+                                            <div className="product__item-add">
+                                                <button className="product__item-add-btn">
+                                                    <FaCartPlus/> Thêm vào giỏ
+                                                </button>
+                                            </div>
+                                            <div className="product__item_corner_new">
+                                                <span className="product__item_corner_new-text">Mới</span>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                                
                             </Slider>
                         </div>
                         <div className="product__button-view-all">
@@ -132,74 +119,35 @@ function Product() {
                         </div>
                         <div className="product__item-slick">
                             <Slider ref={sliderProductMostViewer} {...settings}>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src={pdnew1} alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/05/dia-nhom-probike-7075-a9-cho-exciter-42t-products-1242.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2021/06/vo-dunlop-8090-16-d307-products-1530.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/11/nhot-maxima-full-syn-10w40-products-1317.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
+
+                            {
+                                loading ? 
+                                    <LoadingBox/>
+                                    :error ? 
+                                    <MessageBox variant='danger' >{error}</MessageBox>
+                                    :
+                                    products.map(product =>(
+                                        <div className="product__item">
+                                            <Link className="product__item-router" to={`/product/${product._id}`}>
+                                                <div className="product__item-img">
+                                                    <img src={product.image} alt="" />
+                                                </div>
+                                                <div className="product__item-text">
+                                                    <h3 className="product__item-text-title">{product.name}</h3>
+                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                </div>
+                                            </Link>
+                                            <div className="product__item-add">
+                                                <button className="product__item-add-btn">
+                                                    <FaCartPlus/> Thêm vào giỏ
+                                                </button>
+                                            </div>
+                                            <div className="product__item_corner_new">
+                                                <span className="product__item_corner_new-text">Mới</span>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </Slider>
                         </div>
                         <div className="product__button-view-all">
@@ -256,74 +204,34 @@ function Product() {
                         </div>
                         <div className="product__item-slick">
                             <Slider ref={sliderProductMostViewer} {...settings}>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src={pdnew1} alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/05/dia-nhom-probike-7075-a9-cho-exciter-42t-products-1242.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2021/06/vo-dunlop-8090-16-d307-products-1530.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
-                                <div className="product__item">
-                                    <div className="product__item-img">
-                                        <img src="https://shop2banh.vn/images/thumbs/2020/11/nhot-maxima-full-syn-10w40-products-1317.jpg" alt="" />
-                                    </div>
-                                    <div className="product__item-text">
-                                        <h3 className="product__item-text-title">Tay thắng Carbon cho Honda Sonic, MSX, CBR150</h3>
-                                        <h3 className="product__item-text-price">300.000 đ</h3>
-                                    </div>
-                                    <div className="product__item-add">
-                                        <button className="product__item-add-btn">
-                                            <FaCartPlus/> Thêm vào giỏ
-                                        </button>
-                                    </div>
-                                    <div className="product__item_corner_new">
-                                        <span className="product__item_corner_new-text">Mới</span>
-                                    </div>
-                                </div>
+                            {
+                                loading ? 
+                                    <LoadingBox/>
+                                    :error ? 
+                                    <MessageBox variant='danger' >{error}</MessageBox>
+                                    :
+                                    products.map(product =>(
+                                        <div className="product__item">
+                                            <Link className="product__item-router" to={`/product/${product._id}`}>
+                                                <div className="product__item-img">
+                                                    <img src={product.image} alt="" />
+                                                </div>
+                                                <div className="product__item-text">
+                                                    <h3 className="product__item-text-title">{product.name}</h3>
+                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                </div>
+                                            </Link>
+                                            <div className="product__item-add">
+                                                <button className="product__item-add-btn">
+                                                    <FaCartPlus/> Thêm vào giỏ
+                                                </button>
+                                            </div>
+                                            <div className="product__item_corner_new">
+                                                <span className="product__item_corner_new-text">Mới</span>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </Slider>
                         </div>
                         <div className="product__button-view-all">

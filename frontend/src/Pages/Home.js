@@ -6,12 +6,15 @@ import SliderBottom from '../Components/SliderBottom'
 import Footer from '../Components/Footer'
 import '../css/Home.css'
 
+import data ,{dataSlideBanner} from '../data'
+
 function Home() {
+
     return (
         <>
             <Header/>
             <SliderBanner/>
-            <Product/>
+            <Product products={data.productsHome} />
             <SliderBottom/>
             <Footer/>
         </>

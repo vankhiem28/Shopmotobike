@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Slider  from "react-slick"
 
 import Header from '../Components/Header'
@@ -11,9 +12,18 @@ import {FaCartPlus,FaCreativeCommonsSa,FaTruck,FaRegCheckCircle,FaCheckCircle} f
 import '../css/Grid.css'
 import '../css/ProductDetail.css'
 
+import data from '../data'
+
 function ProductDetail() {
-    const [nav1, setNav1] = useState();
-    const [nav2, setNav2] = useState();
+    const [nav1, setNav1] = useState()
+    const [nav2, setNav2] = useState()
+    const {id} = useParams();
+
+
+    const product = data.productsHome.find((x)=>(x._id===Number(id)))
+    if(!product) {
+        return <h1>Khong tim thays</h1>
+    }
     return (
         <React.Fragment>
             <Header/>
@@ -25,13 +35,13 @@ function ProductDetail() {
                                 <div className="productsdetail__image-slick-big">
                                     <Slider asNavFor={nav2} ref={(slider1)=>(setNav1(slider1))} >
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" />
+                                            <img src={product.image_detail1} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fa9c99d.jpg" alt="" />
+                                            <img src={product.image_detail2} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fac113a.jpg" alt="" />
+                                            <img src={product.image_detail3} alt="" />
                                         </div>
                                     </Slider>
                                 </div>
@@ -44,13 +54,13 @@ function ProductDetail() {
                                         focusOnSelect={true}
                                         >
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" />
+                                            <img src={product.image_detail1} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fa9c99d.jpg" alt="" />
+                                            <img src={product.image_detail2} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fac113a.jpg" alt="" />
+                                            <img src={product.image_detail3} alt="" />
                                         </div>
                                     </Slider>
                                 </div>
@@ -60,7 +70,7 @@ function ProductDetail() {
                             <div className="productsdetail__box-right">
                                 <div className="productsdetail__box-title">
                                     <h3 className="productsdetail__box-title-text">
-                                        Đĩa KingSpeed 245mm (4 lỗ mâm độ) cho Exciter 150
+                                        {product.name}
                                     </h3>
                                 </div>
                                 <div className="productsdetail__box-evaluate">
@@ -70,7 +80,7 @@ function ProductDetail() {
                                 </div>
                                 <div className="productsdetail__box-price">
                                     <p className="productsdetail__box-price-text">
-                                        500.000đ
+                                        {product.price}
                                     </p>
                                     <div className="productsdetail__box-price-status">
                                         <FaCheckCircle className="productsdetail__box-price-status-icon"/>
@@ -127,12 +137,11 @@ function ProductDetail() {
                                     </div>
                                     <div className="productsdetail__info-description">
                                         <p className="productsdetail__info-description-text">
-                                            Đĩa KingSpeed thương hiệu mới đang hot trên thị trường với thiết kế rất đẹp, độc tuy nhiên giá thành lại khá hợp lí.
-                                            Đĩa KingSpeed 245mm 4 lỗ cho Exciter 150 đi mâm độ có 4 lỗ bắt đĩa như mâm RCB, mâm X1R...
+                                            {product.description}
                                         </p>
                                     </div>
                                     <div className="productsdetail__info-image">
-                                        <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="productsdetail__info-image-img" />
+                                        <img src={product.image_detail2} alt="" className="productsdetail__info-image-img" />
                                     </div>
                                 </div>
                             </div>
