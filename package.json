@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/vankhiem28/Shopmotobike#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.1.3"
   },
   "devDependencies": {
     "eslint": "^8.5.0",

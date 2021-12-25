@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { FaSearch,FaShoppingCart,FaUserAlt, } from 'react-icons/fa'
 import { MdSearch,MdClose } from "react-icons/md"
 
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useParams} from 'react-router-dom'
 
 import logo from '../img/logoFN.png'
 import '../css/Header.css'
 import '../css/Grid.css'
-
-
+import { addToCart, removeFromCart } from '../actions/CartActions'
 
 function Header() {
+    
+    const cart = useSelector(state => state.cart)
+    const {cartItems} =cart
+
+    const dispatch = useDispatch()
+    const handleDeleteItemFromCart = (id) => {
+        dispatch(removeFromCart(id))
+    }
     return (
         <>
             <header>
@@ -181,16 +189,45 @@ function Header() {
                                 </label>
                             </div>
                             <div className="header__right-info header__right-info-cart--hover">
-                                <span className="header__right-info-notice">4</span>
+                                {cartItems.length > 0 && (
+                                    <span className="header__right-info-notice">{cartItems.length}</span>
+                                    
+                                )}
                                 <FaShoppingCart className="header__right-info-icon" />
                                 <div className="header__right-info-cart">
                                     <div className="header__right-info-cart-title">
-                                        <p className="header__right-info-cart-title-text">
-                                            Sản phẩm đã thêm
-                                        </p>
+                                        {cartItems.length > 0 ? <p className="header__right-info-cart-title-text">Sản phẩm đã thêm</p>:<p className="header__right-info-cart-title-text">Chưa có sản phẩm</p> }
                                     </div>
                                     <div className="header__right-info-cart-content-item">
-                                        <div className="header__right-info-cart-item">
+                                        {cartItems.map((item)=>(
+
+                                            <div className="header__right-info-cart-item">
+                                                <img src={item.image} alt="" className="header__right-info-cart-item-img" />
+                                                <div className="header__right-info-cart-item-box">
+                                                    <div className="header__right-info-cart-item-left">
+                                                        <Link className="header__link" to={`/product/${item.product}`}>
+                                                            <h3 className="header__right-info-cart-item-left-name">
+                                                                {item.name}
+                                                            </h3>
+                                                        </Link>
+                                                        <p className="header__right-info-cart-item-left-quantily">
+                                                            SL:1
+                                                        </p>
+                                                    </div>
+                                                    <div className="header__right-info-cart-item-right">
+                                                        <p className="header__right-info-cart-item-right-price">
+                                                            {item.price.toLocaleString()}đ
+                                                        </p>
+                                                        <button onClick={()=>handleDeleteItemFromCart(item.product)} className="header__right-info-cart-item-right-btn">
+                                                            Xóa
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        ))}
+                                        {/* <div className="header__right-info-cart-item">
                                             <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="header__right-info-cart-item-img" />
                                             <div className="header__right-info-cart-item-box">
                                                 <div className="header__right-info-cart-item-left">
@@ -211,8 +248,8 @@ function Header() {
                                                 </div>
 
                                             </div>
-                                        </div>
-                                        <div className="header__right-info-cart-item">
+                                        </div> */}
+                                        {/* <div className="header__right-info-cart-item">
                                             <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="header__right-info-cart-item-img" />
                                             <div className="header__right-info-cart-item-box">
                                                 <div className="header__right-info-cart-item-left">
@@ -233,8 +270,8 @@ function Header() {
                                                 </div>
 
                                             </div>
-                                        </div>
-                                        <div className="header__right-info-cart-item">
+                                        </div> */}
+                                        {/* <div className="header__right-info-cart-item">
                                             <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="header__right-info-cart-item-img" />
                                             <div className="header__right-info-cart-item-box">
                                                 <div className="header__right-info-cart-item-left">
@@ -255,8 +292,8 @@ function Header() {
                                                 </div>
 
                                             </div>
-                                        </div>
-                                        <div className="header__right-info-cart-item">
+                                        </div> */}
+                                        {/* <div className="header__right-info-cart-item">
                                             <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="header__right-info-cart-item-img" />
                                             <div className="header__right-info-cart-item-box">
                                                 <div className="header__right-info-cart-item-left">
@@ -277,34 +314,14 @@ function Header() {
                                                 </div>
 
                                             </div>
-                                        </div>
-                                        <div className="header__right-info-cart-item">
-                                            <img src="https://shop2banh.vn/images/thumbs/2021/01/dia-kingspeed-245mm-4-lo-cho-exciter150-1427-slide-products-5ff425fb0ede4.jpg" alt="" className="header__right-info-cart-item-img" />
-                                            <div className="header__right-info-cart-item-box">
-                                                <div className="header__right-info-cart-item-left">
-                                                    <h3 className="header__right-info-cart-item-left-name">
-                                                        Đĩa KingSpeed 245mm (4 lỗ mâm độ) cho Exciter 150
-                                                    </h3>
-                                                    <p className="header__right-info-cart-item-left-quantily">
-                                                        Số lượng: 1
-                                                    </p>
-                                                </div>
-                                                <div className="header__right-info-cart-item-right">
-                                                    <p className="header__right-info-cart-item-right-price">
-                                                        500.000đ
-                                                    </p>
-                                                    <button className="header__right-info-cart-item-right-btn">
-                                                        Xóa
-                                                    </button>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="header__right-info-cart-bottom">
-                                        <button className="header__right-info-cart-bottom-btn">
-                                            Xem Giỏ Hàng
-                                        </button>
+                                        <Link to={`/cart/all`}>
+                                            <button className="header__right-info-cart-bottom-btn">
+                                                Xem Giỏ Hàng
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

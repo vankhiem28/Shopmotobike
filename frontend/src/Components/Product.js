@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Slider from "react-slick"
 import {useRef,useEffect} from 'react'
 
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
-import {Link} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 
 import LoadingBox from './LoadingBox'
 import MessageBox from './MessageBox'
@@ -14,13 +14,16 @@ import {FaCartPlus,FaAngleRight,FaAngleLeft,FaAngleDoubleRight } from 'react-ico
 
 import '../css/Grid.css'
 import '../css/Product.css'
-import { listProducts } from '../actions/ProductActions'
+import { detailsProducts, listProducts } from '../actions/ProductActions'
+import { addToCart } from '../actions/CartActions'
 
 
 
 function Product() {
     const sliderProductNews =useRef()
     const sliderProductMostViewer =useRef()
+    const sliderProductMostSeller =useRef()
+
     const settings = {
         dots: false,
         infinite: true,
@@ -31,24 +34,15 @@ function Product() {
       const dispatch =useDispatch()
       const productList = useSelector((state) => state.productList)
       const {loading, error, products} = productList
-      console.log(error);
+
     useEffect(() => {
-        // const fecthData = async () => {
-        //     try {
-        //         setLoading(true)
-        //         const {data} = await axios.get('http://localhost:5000/api/productsHome')
-        //         setLoading(false)
-        //         setProducts(data)
-        //     } catch(err) {
-        //         setError(err.message)
-        //         setLoading(false)
-        //     }
-        // }
-        // fecthData()
-
         dispatch(listProducts());
-
     }, [])
+
+    const handleAddToCart = (id) => {
+        dispatch(addToCart(id))
+    }
+
 
     return (
         <React.Fragment>
@@ -69,7 +63,7 @@ function Product() {
                         <div className="product__item-slick">
                             <Slider ref={sliderProductNews} {...settings}>
                                 {
-                                loading ? 
+                                    loading ? 
                                     <LoadingBox/>
                                     :error ? 
                                     <MessageBox variant='danger' >{error}</MessageBox>
@@ -82,11 +76,11 @@ function Product() {
                                                 </div>
                                                 <div className="product__item-text">
                                                     <h3 className="product__item-text-title">{product.name}</h3>
-                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                    <h3 className="product__item-text-price">{product.price.toLocaleString()} đ</h3>
                                                 </div>
                                             </Link>
                                             <div className="product__item-add">
-                                                <button className="product__item-add-btn">
+                                                <button className="product__item-add-btn" onClick={()=>handleAddToCart(product._id)} >
                                                     <FaCartPlus/> Thêm vào giỏ
                                                 </button>
                                             </div>
@@ -134,7 +128,7 @@ function Product() {
                                                 </div>
                                                 <div className="product__item-text">
                                                     <h3 className="product__item-text-title">{product.name}</h3>
-                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                    <h3 className="product__item-text-price">{product.price.toLocaleString()} đ</h3>
                                                 </div>
                                             </Link>
                                             <div className="product__item-add">
@@ -198,12 +192,12 @@ function Product() {
                                 <h3 className="product__nav-title-text">Sản Phẩm Bán Chạy</h3>
                             </div>
                             <div className="product__nav-button">
-                                <button className="product__nav-btn product__nav-btn-prev" onClick={() => sliderProductMostViewer?.current?.slickPrev()}><FaAngleLeft className="product__nav-btn-icon"/></button>
-                                <button className="product__nav-btn product__nav-btn-next" onClick={() => sliderProductMostViewer?.current?.slickNext()}><FaAngleRight className="product__nav-btn-icon"/></button>
+                                <button className="product__nav-btn product__nav-btn-prev" onClick={() => sliderProductMostSeller?.current?.slickPrev()}><FaAngleLeft className="product__nav-btn-icon"/></button>
+                                <button className="product__nav-btn product__nav-btn-next" onClick={() => sliderProductMostSeller?.current?.slickNext()}><FaAngleRight className="product__nav-btn-icon"/></button>
                             </div>
                         </div>
                         <div className="product__item-slick">
-                            <Slider ref={sliderProductMostViewer} {...settings}>
+                            <Slider ref={sliderProductMostSeller} {...settings}>
                             {
                                 loading ? 
                                     <LoadingBox/>
@@ -218,7 +212,7 @@ function Product() {
                                                 </div>
                                                 <div className="product__item-text">
                                                     <h3 className="product__item-text-title">{product.name}</h3>
-                                                    <h3 className="product__item-text-price">{product.price} đ</h3>
+                                                    <h3 className="product__item-text-price">{product.price.toLocaleString()} đ</h3>
                                                 </div>
                                             </Link>
                                             <div className="product__item-add">

@@ -134,6 +134,12 @@
     border: 1px solid #ccc;
 }
 
+.productsdetail__box-quantily-btn:hover {
+    cursor: pointer;
+    background-color:var(--primary-color);
+    color:#fff;
+}
+
 .productsdetail__box-quantily-input {
     width: 35px;
     text-align: center;
@@ -324,3 +330,5 @@
     padding-top: 20px;
     color:var(--primary-color);
 }
+
+

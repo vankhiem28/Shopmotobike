@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate} from 'react-router-dom'
 import Slider  from "react-slick"
 
 import Header from '../Components/Header'
@@ -12,38 +12,75 @@ import {FaCartPlus,FaCreativeCommonsSa,FaTruck,FaRegCheckCircle,FaCheckCircle} f
 import '../css/Grid.css'
 import '../css/ProductDetail.css'
 
-import data from '../data'
+import { useDispatch, useSelector } from 'react-redux'
+import LoadingBox from '../Components/LoadingBox'
+import MessageBox from '../Components/MessageBox'
+import { detailsProducts } from '../actions/ProductActions'
+import { addToCart } from '../actions/CartActions'
 
-function ProductDetail() {
+function ProductDetail(props) {
     const [nav1, setNav1] = useState()
     const [nav2, setNav2] = useState()
-    const {id} = useParams();
+    const [quantily,setQuantity] = useState(1);
+    const {id} = useParams()
+    const navigate = useNavigate()
+    const productId =(id)
 
 
-    const product = data.productsHome.find((x)=>(x._id===Number(id)))
-    if(!product) {
-        return <h1>Khong tim thays</h1>
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const {loading,error,product} = productDetails
+    
+    console.log(productId);
+
+    useEffect(()=> {
+        dispatch(detailsProducts(productId))
+    },[dispatch, productId])
+
+    const handleQuantityUp = () => {
+        setQuantity((prev) => (Number(prev) + 1))
     }
+
+    const handleQuantityDown = () => {
+        quantily <= 0 ? setQuantity(0) : setQuantity(quantily -1)
+    }
+
+    const handleAddToCart = (id) => {
+        dispatch(addToCart(id,quantily))
+    }
+
+    const handleBuyNow = () => {
+        navigate(`/cart/${productId}?qty=${quantily}`)
+    }
+
     return (
         <React.Fragment>
             <Header/>
+
             <div className="productsdetail__container">
                 <div className="grid wide">
+                    {
+                        loading ? 
+                            <LoadingBox/>
+                        :error ? 
+                            <MessageBox variant='danger'>{error}</MessageBox>
+                        :
                     <div className="row productsdetail__contain">
                         <div className="col l-5">
                             <div className="productsdetail__image">
                                 <div className="productsdetail__image-slick-big">
                                     <Slider asNavFor={nav2} ref={(slider1)=>(setNav1(slider1))} >
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail1} alt="" />
+                                            <img src={product.image_left} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail2} alt="" />
+                                            <img src={product.image_bottom} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail3} alt="" />
+                                            <img src={product.image_right} alt="" />
                                         </div>
                                     </Slider>
+                                
                                 </div>
                                 <div className="productsdetail__image-slick-small">
                                     <Slider
@@ -54,13 +91,13 @@ function ProductDetail() {
                                         focusOnSelect={true}
                                         >
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail1} alt="" />
+                                            <img src={product.image_left} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail2} alt="" />
+                                            <img src={product.image_bottom} alt="" />
                                         </div>
                                         <div className="productsdetail__image-slick-img">
-                                            <img src={product.image_detail3} alt="" />
+                                            <img src={product.image_right} alt="" />
                                         </div>
                                     </Slider>
                                 </div>
@@ -80,7 +117,7 @@ function ProductDetail() {
                                 </div>
                                 <div className="productsdetail__box-price">
                                     <p className="productsdetail__box-price-text">
-                                        {product.price}
+                                        {product.price.toLocaleString()}đ
                                     </p>
                                     <div className="productsdetail__box-price-status">
                                         <FaCheckCircle className="productsdetail__box-price-status-icon"/>
@@ -94,20 +131,23 @@ function ProductDetail() {
                                         Số Lượng
                                     </p>
                                     <div className="productsdetail__box-quantily-contain">
-                                        <button className="productsdetail__box-quantily-btn">
+                                        <button onClick={handleQuantityDown} className="productsdetail__box-quantily-btn">
                                             -
                                         </button>
-                                        <input type="text" className="productsdetail__box-quantily-input" value={1} />
-                                        <button className="productsdetail__box-quantily-btn">
+                                        <input onChange={(e)=>setQuantity(Number(e.target.value))} type="text" className="productsdetail__box-quantily-input" value={quantily} />
+                                        <button onClick={handleQuantityUp} className="productsdetail__box-quantily-btn">
                                             +
                                         </button>
                                     </div>
                                 </div>
                                 <div className="productsdetail__box-button">
-                                    <button className="productsdetail__box-button-btn">
-                                       <FaCartPlus/> Thêm Vào Giỏ Hàng
-                                    </button>
-                                    <button className="productsdetail__box-button-btn">
+                                    {product.countInStock > 0 && (
+
+                                        <button className="productsdetail__box-button-btn"  onClick={()=>handleAddToCart(product._id)}>
+                                            <FaCartPlus/> Thêm Vào Giỏ Hàng
+                                        </button>
+                                    )}
+                                    <button className= "productsdetail__box-button-btn" onClick={()=>handleBuyNow()} >
                                         Mua Ngay
                                     </button>
                                 </div>
@@ -141,7 +181,7 @@ function ProductDetail() {
                                         </p>
                                     </div>
                                     <div className="productsdetail__info-image">
-                                        <img src={product.image_detail2} alt="" className="productsdetail__info-image-img" />
+                                        <img src={product.image_bottom} alt="" className="productsdetail__info-image-img" />
                                     </div>
                                 </div>
                             </div>
@@ -221,6 +261,7 @@ function ProductDetail() {
                             </div>
                         </div>
                     </div>
+                    }
                 <SliderBottom/>
                 </div>
             </div>

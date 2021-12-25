@@ -11,8 +11,11 @@ import {
   Routes,
   Navigate
 } from "react-router-dom";
+import { useSelector } from 'react-redux'
 function App() {
   const user =true
+  const cart =useSelector(state=>state.cart)
+  const {cartItems} =cart
   return (
     <div className="App">
       <Router>
@@ -23,7 +26,9 @@ function App() {
           </Route>
           <Route exact path="/product/:id" element={<ProductDetail/>}>
           </Route>
-          <Route path="cart" element={<Cart/>}>
+          <Route exact path="/cart/view" element={<Cart/>}>
+          </Route>
+          <Route exact path="/cart/:id" element={<Cart/>}>
           </Route>
           <Route path="register" element={user ? <Navigate to="/"/> : <Register/>}>
           </Route>
