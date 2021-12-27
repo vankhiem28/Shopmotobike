@@ -1,0 +1,7 @@
+.danger {
+    font-size: 1.6rem;
+    color:red;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top:10px;
+}

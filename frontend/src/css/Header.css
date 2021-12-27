@@ -26,6 +26,7 @@ header {
 }
 
 .header__nav-logo {
+
 }
 
 .header__nav-logo-img {
@@ -38,7 +39,7 @@ header {
 
 .header__list-item {
     display: inline-block;
-    padding:0 20px;
+    padding:0 16px;
     cursor: pointer;
     position: relative;
 }
@@ -496,4 +497,69 @@ header {
 
 .header__link {
     text-decoration: none;
+}
+
+
+
+.header__right-info-logged {
+
+}
+
+.header__right-info-user {
+    font-size:1.2rem;
+    line-height: 21px;
+    text-transform:uppercase;
+    color:var(--primary-color);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+}
+
+.header__logged-dropmenu {
+    position: absolute;
+    height: 20px;
+    background-color:#fff;
+    padding:0 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
+    animation:FadeIn linear 0.3s;
+    display:none;
+}
+
+
+.header__right-info-logged:hover .header__logged-dropmenu {
+    display: block;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.header__logged-dropmenu::before {
+    position: absolute;
+    content: "";
+    border-width: 9px 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    top: -16px;
+    left: 31px;
+    box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
+}
+
+.header__logged-dropmenu-list {
+    padding-top:4px;
+}
+
+.header__logged-dropmenu-list-item {
+    text-align: center;
+    text-decoration: none;
+    font-size:1.2rem;
+    color:#000;
+
 }

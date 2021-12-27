@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { FaSearch,FaShoppingCart,FaUserAlt, } from 'react-icons/fa'
@@ -10,16 +10,26 @@ import logo from '../img/logoFN.png'
 import '../css/Header.css'
 import '../css/Grid.css'
 import { addToCart, removeFromCart } from '../actions/CartActions'
+import { signin, signout } from '../actions/UserActions'
 
 function Header() {
     
     const cart = useSelector(state => state.cart)
     const {cartItems} =cart
 
+
     const dispatch = useDispatch()
     const handleDeleteItemFromCart = (id) => {
         dispatch(removeFromCart(id))
     }
+
+    const userSignin = useSelector((state)=>state.userSignin)
+    const {userInfo} = userSignin
+
+    const handlerSignout = () => {
+        dispatch(signout())
+    }
+
     return (
         <>
             <header>
@@ -325,38 +335,25 @@ function Header() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="header__right-info">
-                                <FaUserAlt className="header__right-info-icon" />
-                                <div className="header__right-info-form">
-                                    <div className="header__right-info-form-login">
-                                        <div className="header__right-info-form-login-title">
-                                            <h3 className="header__right-info-form-login-title-text">
-                                                Đăng nhập tài khoản
-                                            </h3>
-                                            <p className="header__right-info-form-login-title-text">
-                                                Nhập tên đăng nhập và mật khẩu
-                                            </p>
-                                        </div>
-                                        <div className="header__right-info-form-login-input">
-                                            <input type="text" placeholder="Tên đăng nhập" className="header__right-info-form-login-ip" />
-                                            <input type="password" placeholder="Mật khẩu" className="header__right-info-form-login-ip" />
-                                        </div>
-                                        <div className="header__right-info-form-login-policy">
-                                            <p className="header__right-info-form-login-policy-text">
-                                                This site is protected by reCAPTCHA and the Google <span>Privacy Policy </span> and <span> Terms of Service </span> apply.
-                                            </p>
-                                        </div>
-                                        <div className="header__right-info-form-login-button">
-                                            <button className="header__right-info-form-login-btn">
-                                                Đăng nhập
-                                            </button>
-                                            <button className="header__right-info-form-login-btn">
-                                                Đăng ký
-                                            </button>
+                            {
+                                userInfo ? (
+                                    <div className="header__right-info-logged">
+                                        <Link to="#" className="header__right-info-user" >{userInfo.name}</Link>
+                                        <div className="header__logged-dropmenu">
+                                            <ul className="header__logged-dropmenu-list">
+                                                <Link to="#signout" onClick={handlerSignout} className="header__logged-dropmenu-list-item">
+                                                    Đăng Xuất
+                                                </Link>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                ): 
+                                <Link to={'/signin'}>
+                                    <div className="header__right-info">
+                                            <FaUserAlt className="header__right-info-icon" />
+                                    </div>
+                                </Link>
+                            }
                         </div>
                     </div>
                 </div>

@@ -203,7 +203,7 @@ function Cart(props) {
                                                     Giảm Giá Phí Vận Chuyển
                                                 </p>
                                                 <p className="cart__products-checkout-price-price">
-                                                    0đ
+                                                    50.000đ
                                                 </p>
                                             </div>
                                             <div className="cart__products-checkout-price">
@@ -211,7 +211,7 @@ function Cart(props) {
                                                     Tổng Tiền
                                                 </p>
                                                 <p className="cart__products-checkout-price-price">
-                                                    550.000đ
+                                                {cartItems.reduce((init,item) =>init + item.price * item.qty,0).toLocaleString()}đ
                                                 </p>
                                             </div>
                                             <div className="cart__products-checkout-button">

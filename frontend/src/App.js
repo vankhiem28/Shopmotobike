@@ -1,6 +1,7 @@
 
 import Home from './Pages/Home'
 import Register from './Pages/Register'
+import Login from './Pages/Login'
 import ProductList from './Pages/ProductList'
 import ProductDetail from './Pages/ProductDetail'
 import Cart from './Pages/Cart'
@@ -16,6 +17,8 @@ function App() {
   const user =true
   const cart =useSelector(state=>state.cart)
   const {cartItems} =cart
+
+
   return (
     <div className="App">
       <Router>
@@ -30,15 +33,12 @@ function App() {
           </Route>
           <Route exact path="/cart/:id" element={<Cart/>}>
           </Route>
-          <Route path="register" element={user ? <Navigate to="/"/> : <Register/>}>
+          <Route path="/register" element={<Register/>}>
+          </Route>
+          <Route path="/signin" element={<Login/>}>
           </Route>
         </Routes>
       </Router>
-         {/* <Home/> */}
-         {/* <Register/> */}
-         {/* <ProductList/> */}
-         {/* <ProductDetail/> */}
-         {/* <Cart/> */}
     </div>
 
   );

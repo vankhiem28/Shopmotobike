@@ -15,6 +15,10 @@
     position: relative;
 }
 
+.login__bg {
+    background-image: url("https://images.wallpaperscraft.com/image/single/motor_engine_mechanism_156863_1920x1080.jpg");
+}
+
 .register__bg-overlay {
     position: absolute;
     top: 0;
@@ -103,8 +107,8 @@
 }
 
 .register__form-button {
-    padding-top: 20px;
-    padding-bottom: 30px;
+    padding-top: 16px;
+    padding-bottom: 26px;
 }
 
 .register__form-btn {
@@ -121,3 +125,25 @@
     opacity:0.9;
 }
 
+.login__question {
+    padding-top:10px;
+    font-size:1.1rem;
+}
+
+.login__question-text {
+    display: inline-block;
+}
+
+.login__question-register {
+    display: inline-block;
+    padding-left: 4px;
+    color:var(--primary-color);
+    cursor: pointer;
+}
+
+
+.login__error-mess {
+    margin-top:22px;
+    text-align: center;
+    color: red;
+}
