@@ -35,7 +35,7 @@ function Cart(props) {
     }
 
     const handleButtonPay = () => {
-        navigate(`/signin?redirec=shipping`)
+        navigate('/shipping')
     }
     
     return (
@@ -225,7 +225,6 @@ function Cart(props) {
                             </div>
                             <SliderBottom/>
                         </div>
-                
             </div>
             <Footer/>
         </React.Fragment>

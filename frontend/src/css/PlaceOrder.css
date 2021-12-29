@@ -1,0 +1,328 @@
+.order__container {
+    padding-top: 107px;
+    margin-bottom: 24px;
+}
+
+.order__bg {
+    background-image: url("https://images.wallpaperscraft.com/image/single/engine_harley_davidson_motorcycle_129193_1920x1080.jpg");
+    padding-top:380px;
+    /* width: 100%; */
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+.order__bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.order__bg-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.order__bg-title-text {
+    font-size:3.6rem;
+    color:#fff;
+}
+
+.order__bg-title-text::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom:-6px;
+    left:0;
+}
+
+
+
+.order__title {
+    margin-top: 32px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.order__title-text {
+    font-size:2.4rem;
+    font-weight: 500;
+}
+
+.order__button-return {
+
+}
+
+.order__button-return-btn {
+    border: none;
+    padding:10px 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.order__button-return-btn:hover {
+    cursor: pointer;
+    background-color: rgba(219, 72, 46,0.9);
+
+}
+
+.order__products-box-left {
+    margin-top:10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding:0px 6px;
+    max-height: 537px;
+    overflow:auto;
+}
+
+.order__products-item {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.order__products-item-image {
+    border: 1px solid var(--primary-color);
+}
+
+.order__products-item-img {
+    width: 100px;
+    padding:8px 6px;
+}
+
+.order__products-item-box {
+    flex: 1;
+    display: flex;
+    justify-content:space-between;
+    
+}
+
+.order__products-item-text {
+    display: flex;
+    align-items:center;
+    justify-content:space-around;
+    width: 100%;
+}
+
+.order__products-item-text-name {
+    font-size:1.8rem;
+    font-weight: 500;
+    width: 350px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    color:#000;
+    max-height: 20px;
+}
+
+.order__products-item-text-name:hover {
+    color: var(--primary-color);
+}
+
+.order__products-item-text-price {
+    color: var(--primary-color);
+    font-size:1.6rem;
+    font-weight: 500;
+}
+
+.order__products-item-input {
+
+}
+
+.order__products-item-input-btn {
+
+}
+
+.order__products-item-input-ip {
+    height: 26px;
+    text-align: center;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.order__products-item-input-btn {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ccc;
+}
+
+.order__products-item-input-btn:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    color: #fff;
+}
+
+.order__products-item-button {
+
+}
+
+.order__products-item-button-btn {
+    width: 80px;
+    padding:3px 0px;
+    border: 1px solid #ccc;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.order__products-item-button-btn:hover {
+    background-color: rgba(219, 72, 46,0.9);
+    cursor: pointer;
+}
+
+
+/* checkout */
+
+.order__products-box-right {
+    margin-top: 10px;
+}
+
+.order__products-checkout-title {
+    width: 100%;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.order__products-checkout-title-text {
+    margin-left: 10px;
+    font-size:2.2rem;
+    font-weight: 500;
+}
+
+.order__products-checkout-box {
+
+    border:1px solid #ccc;
+    padding:10px 10px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top: none;
+}
+
+.order__products-checkout-price {
+    display: flex;
+    justify-content: space-between;
+    font-size:1.5rem;
+    padding: 8px 0px;
+    font-weight: 400;
+}
+
+.order__products-checkout-price:nth-child(4) {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.order__products-checkout-price-text {
+
+}
+
+.order__products-checkout-price-price {
+
+}
+
+.order__products-checkout-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.order__products-checkout-button-btn {
+    padding: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 4px;
+}
+
+.order__products-checkout-button-btn:hover {
+    background-color: rgba(219, 72, 46,0.9);
+    cursor: pointer;
+}
+
+.order__link {
+    text-decoration: none;
+}
+
+.order__products-item-input-select {
+
+}
+
+.order__info {
+    margin-top: 10px;
+}
+
+.order__info-address {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.order__info-address-top {
+
+}
+
+.order__info-address-top-text {
+    font-size:2.2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight:500;
+    padding: 4px 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.order__info-address-bottom {
+    padding: 8px 10px;
+}
+
+.order__info-address-bottom-text {
+    font-size:1.9rem;
+    margin-top:10px;
+}
+
+.order__info-payment {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.order__info-payment-top {
+
+}
+
+.order__info-payment-top-text {
+    font-size:2.2rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight:500;
+    padding: 4px 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+}
+
+.order__info-payment-bottom {
+
+}
+
+.order__info-payment-bottom-text {
+    padding:10px 8px;
+    font-size:1.9rem;
+    font-weight:400;
+}

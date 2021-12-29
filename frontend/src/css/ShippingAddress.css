@@ -1,0 +1,167 @@
+.shipping__address__container {
+    padding-top:107px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.shipping__address__bg {
+    width: 100%;
+    height: 380px;
+    padding-top:380px;
+    background-image: url("https://images.wallpaperscraft.com/image/single/motorcycle_speedometer_steering_wheel_164863_1920x1080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+.shipping__address__bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.shipping__address__bg-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.shipping__address__bg-title-text {
+    font-size:3.6rem;
+    color:#fff;
+}
+
+.shipping__address__bg-title-text::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom:-3px;
+    left:0;
+}
+
+.shipping__address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:50px;
+    /* background-color:#ccc; */
+    justify-content: center;
+}
+
+.shipping__address__title {
+    
+}
+
+.shipping__address__title-text {
+    text-transform: uppercase;
+    font-size:2.2rem;
+    position: relative;
+}
+
+.shipping__address__title-text::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color:var(--primary-color);
+    bottom:-6px;
+    left:0;
+}
+
+.shipping__address__form {
+    padding-top:16px;
+}
+
+.shipping__address__form-input {
+
+}
+
+.shipping__address__form-input span {
+    display:block;
+    font-size:2.0rem;
+    padding-top: 20px;
+    padding-bottom: 6px;
+
+}
+
+.shipping__address__input__form-input-ip {
+    padding: 0 10px;
+    font-size: 1.8rem;
+    width:700px;
+    height:50px;
+    display:block;
+    outline-color:var(--primary-color);
+    outline-width: thin;
+    /* border:1px solid var(--primary-color); */
+}
+
+.shipping__address__form-button {
+    padding-top: 16px;
+    padding-bottom: 26px;
+}
+
+.shipping__address__form-btn {
+    width: 700px;
+    height: 50px;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: var(--primary-color);
+    font-size: 1.6rem;
+    border: none;
+}
+
+.shipping__address__form-btn:hover {
+    opacity:0.9;
+}
+
+.login__question {
+    padding-top:10px;
+    font-size:1.1rem;
+}
+
+.login__question-text {
+    display: inline-block;
+}
+
+.login__question-shipping__address {
+    display: inline-block;
+    padding-left: 4px;
+    color:var(--primary-color);
+    cursor: pointer;
+}
+
+
+.login__error-mess {
+    margin-top:22px;
+    text-align: center;
+    color: red;
+}
+
+.shipping__address-radio-box {
+    width: 100%;
+    display:flex;
+}
+
+.shipping__address-radio {
+    font-size:1.1rem;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.shipping__address-radio span {
+    font-size:1.8rem;
+    padding-right: 6px;
+}
+
+.shipping__address-radio-input {
+    font-size: 1.2rem;
+}
+

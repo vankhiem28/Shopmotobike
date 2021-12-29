@@ -5,6 +5,9 @@ import Login from './Pages/Login'
 import ProductList from './Pages/ProductList'
 import ProductDetail from './Pages/ProductDetail'
 import Cart from './Pages/Cart'
+import ShippingAddress from './Pages/ShippingAddress'
+import PlaceOrder from './Pages/PlaceOrder'
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -36,6 +39,10 @@ function App() {
           <Route path="/register" element={<Register/>}>
           </Route>
           <Route path="/signin" element={<Login/>}>
+          </Route>
+          <Route path="/shipping" element={<ShippingAddress/>}>
+          </Route>
+          <Route path="/placeorder" element={<PlaceOrder/>}>
           </Route>
         </Routes>
       </Router>

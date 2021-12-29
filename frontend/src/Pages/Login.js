@@ -29,6 +29,12 @@ function Login() {
         dispatch(signin(email, password))
     }
 
+    useEffect(() => {
+        if(userInfo) {
+            history(redirect)
+        }
+    },[history,redirect,userInfo])
+
     return (
         <div>
             <Header/>
@@ -43,7 +49,7 @@ function Login() {
                     <div className="grid wide">
                         <div className="row">
                             <div className="col l-12 register__flex">
-                                <form className="register" onSubmit={handlerSubmit} >
+                                <form className="register"  >
                                     <div className="register__title">
                                         <h1 className="register__title-text">
                                             Đăng nhập tài khoản
@@ -62,12 +68,12 @@ function Login() {
                                     </div>
                                     <div className="login__question">
                                         <h3 className="login__question-text">Bạn chưa có tài khoản ?</h3>
-                                       <Link to={'/register'} >
+                                       <Link to={`/register?redirect=${redirect}`} >
                                             <h3 className="login__question-register">Đăng Ký Ngay</h3>
                                        </Link> 
                                     </div>
                                     <div className="register__form-button">
-                                        <button className="register__form-btn">
+                                        <button className="register__form-btn" onClick={handlerSubmit}>
                                             Đăng Nhập
                                         </button>
                                     </div>
