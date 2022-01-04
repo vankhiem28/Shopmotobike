@@ -30,8 +30,8 @@ function ProductDetail(props) {
     const dispatch = useDispatch()
     const productDetails = useSelector(state => state.productDetails)
     const {loading,error,product} = productDetails
+
     
-    console.log(productId);
 
     useEffect(()=> {
         dispatch(detailsProducts(productId))
@@ -59,6 +59,9 @@ function ProductDetail(props) {
 
             <div className="productsdetail__container">
                 <div className="grid wide">
+                    <div className="productsdetail__nav">
+                        <p className="productsdetail__nav-text">Trang chủ &gt; Sản phẩm &gt; Chi tiết sản phẩm</p>
+                    </div>
                     {
                         loading ? 
                             <LoadingBox/>

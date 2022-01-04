@@ -1,0 +1,122 @@
+.contact__container {
+    padding-top:107px;
+}
+
+.contact__bg {
+    background-image: url("https://images.wallpaperscraft.com/image/single/vespa_scooter_red_133042_1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top:380px;
+    position: relative;
+}
+
+.contact__bg-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.contact__bg-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.contact__bg-title::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height:3px;
+    background-color:#fff;
+}
+
+.contact__bg-title-text {
+    font-size:3.6rem;
+    color: #fff;
+}
+
+.contact__left-box {
+    margin-top:42px;
+}
+
+.contact__text {
+    padding-bottom: 20px;
+}
+
+.contact__text-title {
+    font-size:2.6rem;
+    padding-bottom: 18px;
+}
+
+.contact__text-des {
+    font-size:1.4rem;
+}
+
+.contact__info {
+
+}
+
+.contact__info-text {
+    font-size:1.4rem;
+    padding: 4px 0;
+
+}
+
+.contact__info-icon {
+    margin-right: 8px;
+}
+
+.contact__right-box {
+    margin-top:42px;
+
+}
+
+.contact__form {
+
+}
+
+.contact__form-input {
+    display: flex;
+    justify-content:flex-end;
+}
+
+.contact__form-input textarea {
+    height:200px;
+}
+
+.contact__form-input-name {
+    flex-grow: 1;
+    font-size:1.8rem;
+    font-weight: 400;
+    margin-left: 136px;
+}
+
+.contact__form-input-ip {
+    width: 80%;
+    height: 45px;
+    font-size:1.8rem;
+    margin-bottom: 20px;
+    outline: none;
+    padding:0 4px;
+    border: 1px solid #ccc;
+}
+
+.contact__button {
+    margin-bottom:32px;
+}
+
+.contact__button-btn {
+    margin-left: 136px;
+    padding: 12px 12px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+
+}

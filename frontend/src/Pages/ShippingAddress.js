@@ -11,16 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { savePaymentMethod, saveShippingAddress } from '../actions/CartActions'
 
 function ShippingAddress() {
-    const valueRadio = [
-        {
-            id:1,
-            value:"Thanh toán trực tiếp"
-        },
-        {
-            id:2,
-            value:"Chuyển khoản"
-        }
-    ]
+
     const history = useNavigate()
     const userSignin = useSelector((state)=>state.userSignin)
     const {userInfo}=userSignin
@@ -35,15 +26,13 @@ function ShippingAddress() {
     const [phoneNumber,setPhoneNumber] = useState(shippingAddress.phoneNumber)
     const [address,setAddress] = useState(shippingAddress.address)
     const [city,setCity] = useState(shippingAddress.city)
-    const [payment,setPayment] =useState("Thanh toán khi nhận hàng");
 
     const dispatch = useDispatch()
 
     const handlerSubmit = (e) => {
         e.preventDefault()
         dispatch(saveShippingAddress({fullName, phoneNumber,email,address,city}))
-        dispatch(savePaymentMethod(payment))
-        history('/placeorder')
+        history('/payment')
     }
 
     return (
@@ -85,16 +74,6 @@ function ShippingAddress() {
                                         <div className="shipping__address__form-input">
                                             <span>Thành phố</span>
                                             <input value={city} onChange={(e)=>setCity(e.target.value)} type="text"  placeholder="Thành phố" className="shipping__address__input__form-input-ip"/>
-                                        </div>
-                                        <div className="shipping__address-radio-box">
-                                            {
-                                                valueRadio.map((item)=> (
-                                                    <div className="shipping__address-radio">
-                                                        <span>{item.value}</span>
-                                                        <input checked={payment === item.id} onChange={(e)=>setPayment(item.id)} type="radio" className="shipping__address-radio-input "/>
-                                                    </div>
-                                                ))
-                                            }
                                         </div>
                                     </div>
                                     <div className="shipping__address__form-button">

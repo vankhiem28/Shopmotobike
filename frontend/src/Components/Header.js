@@ -26,9 +26,14 @@ function Header() {
     const userSignin = useSelector((state)=>state.userSignin)
     const {userInfo} = userSignin
 
+    const productList = useSelector((state) => state.productList)
+    const {loading, error, products} = productList
+
+
     const handlerSignout = () => {
         dispatch(signout())
     }
+
 
     return (
         <>
@@ -42,153 +47,29 @@ function Header() {
                                 </div>
                             </Link>
                             <ul className="header__list">
-                                <Link to= "/products/:category">
+                                <Link to="/">
                                     <li className="header__list-item">
-                                        <span className="header__list-item-link">Đồ Chơi Xe Máy</span>
-                                            <div className="header__drop-menu">
-                                                <ul className="header__drop-menu-list">
-                                                    <li className="header__drop-menu-item">
-                                                        <a href="" className="header__drop-menu-link">
-                                                            Tay thắng
-                                                        </a>
-                                                    </li>
-                                                    <li className="header__drop-menu-item">
-                                                        <a href="" className="header__drop-menu-link">
-                                                            Bao tay
-                                                        </a>
-                                                    </li>
-                                                    <li className="header__drop-menu-item">
-                                                        <a href="" className="header__drop-menu-link">
-                                                            Kính chiếu hậu 
-                                                        </a>
-                                                    </li>
-                                                    <li className="header__drop-menu-item">
-                                                        <a href="" className="header__drop-menu-link">
-                                                            Đèn led xe máy
-                                                        </a>
-                                                    </li>
-                                                    <li className="header__drop-menu-item">
-                                                        <a href="" className="header__drop-menu-link">
-                                                            Đĩa xe máy
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                        <span className="header__list-item-link">Trang Chủ</span>
                                     </li>
-
+                                </Link>
+                                <Link to= "/productsList">
+                                    <li className="header__list-item">
+                                        <span className="header__list-item-link">Sản phẩm</span>
+                                    </li>
                                 </Link>
                                 <li className="header__list-item">
-                                    <span className="header__list-item-link">Phụ Tùng Thay Thế</span>
-                                    <div className="header__drop-menu">
-                                            <ul className="header__drop-menu-list">
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Phuộc xe máy
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Bình ác quy xe máy
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Khóa xe máy 
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Lọc gió xe máy
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Bố thắng (Má phanh)
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <span className="header__list-item-link">Tin Tức</span>
+                                </li>
+                                <Link to= "/contact">
+                                    <li className="header__list-item">
+                                        <span className="header__list-item-link">Liên Hệ</span>
+                                    </li>
+                                </Link>
+                                <li className="header__list-item">
+                                    <span className="header__list-item-link">Về chúng tôi</span>
                                 </li>
                                 <li className="header__list-item">
-                                    <span className="header__list-item-link">Vỏ Bánh Xe</span>
-                                    <div className="header__drop-menu">
-                                            <ul className="header__drop-menu-list">
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Vỏ xe Michelin
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Vỏ xe Continetal
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Vỏ xe Aspira
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Vỏ xe IRC
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Lốp chống đinh
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                </li>
-                                <li className="header__list-item">
-                                    <span className="header__list-item-link">Nhớt Xe Máy</span>
-                                    <div className="header__drop-menu">
-                                            <ul className="header__drop-menu-list">
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Motul
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Liqui moly
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Fuchs
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                </li>
-                                <li className="header__list-item">
-                                    <span className="header__list-item-link">Phụ kiện khác</span>
-                                    <div className="header__drop-menu">
-                                            <ul className="header__drop-menu-list">
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Đồ phượt
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Nón bảo hiểm
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Găng tay xe máy
-                                                    </a>
-                                                </li>
-                                                <li className="header__drop-menu-item">
-                                                    <a href="" className="header__drop-menu-link">
-                                                        Bó gối bảo vệ
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <span className="header__list-item-link">Khác</span>
                                 </li>
                             </ul>
                         </div>
@@ -341,9 +222,35 @@ function Header() {
                                         <Link to="#" className="header__right-info-user" >{userInfo.name}</Link>
                                         <div className="header__logged-dropmenu">
                                             <ul className="header__logged-dropmenu-list">
-                                                <Link to="#signout" onClick={handlerSignout} className="header__logged-dropmenu-list-item">
-                                                    Đăng Xuất
-                                                </Link>
+                                                <li>
+                                                    <Link to="/signin" onClick={handlerSignout} className="header__logged-dropmenu-list-item">
+                                                        Đăng Xuất
+                                                    </Link>                             
+                                                </li>
+                                                <li>
+                                                    <Link to="/profile" className="header__logged-dropmenu-list-item">
+                                                        Tài Khoản
+                                                    </Link>                             
+                                                </li>
+                                            {userInfo.isAdmin && 
+                                            <>
+                                                    <li>
+                                                        <Link to="/productsAdmin"  className="header__logged-dropmenu-list-item">
+                                                            QL Sản Phẩm
+                                                        </Link>                             
+                                                    </li>
+                                                    <li>
+                                                        <Link to="/ordersAdmin"  className="header__logged-dropmenu-list-item">
+                                                            QL Người Dùng
+                                                        </Link>                             
+                                                    </li>
+                                                    <li>
+                                                        <Link to="/ordersAdmin"  className="header__logged-dropmenu-list-item">
+                                                            QL Đơn Hàng
+                                                        </Link>                             
+                                                    </li>
+                                            </>
+                                            }    
                                             </ul>
                                         </div>
                                     </div>

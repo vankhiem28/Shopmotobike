@@ -193,6 +193,10 @@
     position: relative;
 }
 
+.product__button-view-all-link {
+    text-decoration: none;
+}
+
 .product__button-view-all::after {
     position: absolute;
     content: '';

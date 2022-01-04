@@ -39,7 +39,7 @@ header {
 
 .header__list-item {
     display: inline-block;
-    padding:0 16px;
+    padding:0 20px;
     cursor: pointer;
     position: relative;
 }
@@ -502,7 +502,8 @@ header {
 
 
 .header__right-info-logged {
-
+    padding: 0 16px;
+    position: relative;
 }
 
 .header__right-info-user {
@@ -518,13 +519,14 @@ header {
 
 .header__logged-dropmenu {
     position: absolute;
-    height: 20px;
+    width: 125px;
     background-color:#fff;
-    padding:0 10px;
     border-radius: 4px;
     box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
     animation:FadeIn linear 0.3s;
     display:none;
+    left:50%;
+    transform: translateX(-50%);
 }
 
 
@@ -548,18 +550,23 @@ header {
     border-style: solid;
     border-color: transparent transparent #fff transparent;
     top: -16px;
-    left: 31px;
-    box-shadow: 0 1px 3.125rem 0 rgb(0 0 0 / 20%);
+    left: 52px;
 }
 
 .header__logged-dropmenu-list {
-    padding-top:4px;
+    list-style: none;
+}
+
+.header__logged-dropmenu-list li {
+    padding: 5px 5px;
+    border-bottom: 1px solid #ccc;
 }
 
 .header__logged-dropmenu-list-item {
+    width: 100%;
+    display: block;
     text-align: center;
     text-decoration: none;
-    font-size:1.2rem;
-    color:#000;
-
+    color: var(--primary-color);
+    font-size: 1.4rem;
 }

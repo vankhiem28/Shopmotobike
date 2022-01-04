@@ -6,7 +6,13 @@ import ProductList from './Pages/ProductList'
 import ProductDetail from './Pages/ProductDetail'
 import Cart from './Pages/Cart'
 import ShippingAddress from './Pages/ShippingAddress'
+import Payment from './Pages/Payment'
 import PlaceOrder from './Pages/PlaceOrder'
+import ProductsAdmin from './Pages/ProductsAdmin'
+import Contacts from './Pages/Contacts'
+import OrderAdmin from './Pages/OrderAdmin'
+import Order from './Pages/Order'
+import ProfilesAdmin from './Pages/ProfilesAdmin'
 
 import './App.css';
 import {
@@ -28,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}>
           </Route>
-          <Route path="/products/:category" element={<ProductList/>}>
+          <Route path="/productsList" element={<ProductList/>}>
           </Route>
           <Route exact path="/product/:id" element={<ProductDetail/>}>
           </Route>
@@ -42,7 +48,19 @@ function App() {
           </Route>
           <Route path="/shipping" element={<ShippingAddress/>}>
           </Route>
+          <Route path="/payment" element={<Payment/>}>
+          </Route>
           <Route path="/placeorder" element={<PlaceOrder/>}>
+          </Route>
+          <Route path="/productsAdmin" element={<ProductsAdmin/>}>
+          </Route>
+          <Route path="/contact" element={<Contacts/>}>
+          </Route>
+          <Route path="/order/:id" element={<Order/>}>
+          </Route>
+          <Route path="/ordersAdmin" element={<OrderAdmin/>}>
+          </Route>
+          <Route path="/profile" element={<ProfilesAdmin/>}>
           </Route>
         </Routes>
       </Router>

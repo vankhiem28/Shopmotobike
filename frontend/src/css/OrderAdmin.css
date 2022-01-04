@@ -1,0 +1,239 @@
+.order__admin__container {
+    padding-top:107px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.order__admin__bg {
+    width: 100%;
+    height: 380px;
+    padding-top:380px;
+    background-image: url("https://images.wallpaperscraft.com/image/single/motorcycle_bike_side_view_115358_3840x2400.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.login__bg {
+    background-image: url("https://images.wallpaperscraft.com/image/single/motor_engine_mechanism_156863_1920x1080.jpg");
+}
+
+.order__admin__bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.order__admin__bg-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.order__admin__bg-title-text {
+    font-size:3.6rem;
+    color:#fff;
+}
+
+.order__admin__bg-title-text::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom:-3px;
+    left:0;
+}
+
+.order__admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:50px;
+    /* background-color:#ccc; */
+    justify-content: center;
+}
+
+.order__admin__title {
+    
+}
+
+.order__admin__title-text {
+    text-transform: uppercase;
+    font-size:2.2rem;
+    position: relative;
+}
+
+.order__admin__title-text::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color:var(--primary-color);
+    bottom:-6px;
+    left:0;
+}
+
+.order__admin__form {
+    padding-top:16px;
+}
+
+.order__admin__form-input {
+
+}
+
+.order__admin__form-input span {
+    display:block;
+    font-size:2.0rem;
+    padding-top: 16px;
+    padding-bottom: 6px;
+
+}
+
+.order__admin__input__form-input-ip {
+    padding: 0 10px;
+    font-size: 1.8rem;
+    width:600px;
+    height:44px;
+    display:block;
+    outline-color:var(--primary-color);
+}
+
+.order__admin__form-button {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 26px;
+}
+
+.order__admin__form-btn {
+    margin-top: 12px;
+    width: 600px;
+    height: 50px;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: var(--primary-color);
+    font-size: 1.6rem;
+    border: none;
+}
+
+.order__admin__form-btn:nth-child(2) {
+    background-color: #ccc;
+    color:#000;
+}
+
+
+.order__admin__form-btn:hover {
+    opacity:0.9;
+}
+
+.login__question {
+    padding-top:10px;
+    font-size:1.1rem;
+}
+
+.login__question-text {
+    display: inline-block;
+}
+
+.login__question-order__admin {
+    display: inline-block;
+    padding-left: 4px;
+    color:var(--primary-color);
+    cursor: pointer;
+}
+
+
+.login__error-mess {
+    margin-top:22px;
+    text-align: center;
+    color: red;
+}
+
+.order__admin__table {
+    display:block;
+    margin-top:20px;
+    border-collapse: collapse;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.order__admin__table td,
+.order__admin__table th {
+    border: 1px solid #ccc;
+    font-size:1.4rem;
+    text-align: center;
+} 
+
+.order__admin__table td {
+    padding: 10px 10px;
+
+}
+
+.order__admin__table th {
+    width: 140px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+
+}
+
+.order__admin__table-button button {
+    padding:3px 8px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.order__admin__table-detail td:nth-child(2) {
+    width: 380px;
+}
+.order__admin__table-detail td:nth-child(3) {
+    width: 200px;
+}
+.order__admin__table-detail td:nth-child(4) {
+    width: 100px;
+}
+.order__admin__table-detail td:nth-child(6) {
+    width: 100px;
+}
+.order__admin__table-button button:hover {
+    cursor: pointer;
+    background-color:rgba(219, 72, 46,0.8)    
+}
+
+.order__admin__table-name {
+    padding:2px 4px;
+    cursor: pointer;
+}
+
+.order__admin__button-box {
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.order__admin__button-tile {
+    text-transform: uppercase;
+}
+
+.order__admin__button-btn {
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    padding:10px 10px;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.order__admin__button-btn:hover {
+    background-color:rgba(219, 72, 46,0.8)
+}

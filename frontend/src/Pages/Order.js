@@ -2,51 +2,28 @@ import React, { useEffect } from 'react'
 import Footer from '../Components/Footer'
 import SliderBottom from '../Components/SliderBottom'
 import Header from '../Components/Header'
-import { Link, useNavigate } from 'react-router-dom' 
+import { Link,useParams } from 'react-router-dom' 
 
 import '../css/PlaceOrder.css'
 import '../css/Grid.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { createOrder } from '../actions/OrderActions'
-import { ORDER_CREATE_RESET } from '../constants/OrderConstrants'
-
-import LoadingBox from '../Components/LoadingBox'
-import MessageBox from '../Components/MessageBox'
-
-function PlaceOrder() {
-    const history = useNavigate()
-
-    const cart =useSelector((state)=> state.cart)
-
-    if(!cart.paymentMethod) {
-        history('/payment')
-    }
-    // const toPrice = (num) => Number(num.toFixed(2));
-    // cart.itemsPrice = toPrice(
-    //     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
-    //   );
-    cart.itemsPrice = cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
-    cart.shippingPrice = cart.itemsPrice > 1000000 ? (0) :(50000);
-    cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
+import { createOrder, detailsOrder } from '../actions/OrderActions'
 
 
-    const orderCreate = useSelector((state)=> state.orderCreate)
-    const {loading,success,error,order} = orderCreate;
+function Order() {
+    const {id} = useParams()
+    const orderId = (id)
     const dispatch = useDispatch()
+
+
+    const orderDetails = useSelector(state => state.orderDetails)
+    const {loading,error,order} = orderDetails
 
     console.log(order);
 
-    const handlerOrder =() => {
-        dispatch(createOrder({...cart, orderItems: cart.cartItems}))
-
-    }
-
     useEffect(() => {
-        if(success) {
-            history(`/order/${order._id}`)
-            dispatch({type: ORDER_CREATE_RESET})
-        }
-    },[dispatch,order,history,success])
+        dispatch(detailsOrder(orderId))
+    },[dispatch, orderId])
 
     return (
         <React.Fragment>
@@ -60,6 +37,9 @@ function PlaceOrder() {
                 </div>
                     <div className="grid wide">
                             <div className="order__title">
+                                <h1>
+                                    {/* {order._id} */}
+                                </h1>
                             </div>
                             <div className="row">
                                 <div className="col l-8">
@@ -72,13 +52,13 @@ function PlaceOrder() {
                                          </div>
                                          <div className="order__info-address-bottom">
                                              <p className="order__info-address-bottom-text">
-                                                 Họ tên: {cart.shippingAddress.fullName}
+                                                 {/* Họ tên: {order.shippingAddress.fullName} */}
                                              </p>
                                              <p className="order__info-address-bottom-text">
-                                                 Địa chỉ: {cart.shippingAddress.address},{cart.shippingAddress.city}
+                                                 {/* Địa chỉ: {order.shippingAddress.address},{order.shippingAddress.city} */}
                                              </p>
                                              <p className="order__info-address-bottom-text">
-                                                 Số điện thoại: {cart.shippingAddress.phoneNumber}
+                                                 {/* Số điện thoại: {order.shippingAddress.phoneNumber} */}
                                              </p>
                                          </div>
                                         </div>
@@ -90,31 +70,31 @@ function PlaceOrder() {
                                             </div>
                                             <div className="order__info-payment-bottom">
                                                 <h3 className="order__info-payment-bottom-text">
-                                                    {cart.paymentMethod}
+                                                    {/* {order.paymentMethod} */}
                                                 </h3>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="order__products-box-left">
-                                    {cart.cartItems.map(item=>(
-                                            <div className="order__products-item">
-                                                <div className="order__products-item-image">
-                                                    <img src={item.image} alt="" className="order__products-item-img" />
+                                        {/* {order.orderItems.map(item=>(
+                                                <div className="order__products-item">
+                                                    <div className="order__products-item-image">
+                                                        <img src={item.image} alt="" className="order__products-item-img" />
+                                                    </div>
+                                                    <div className="order__products-item-box">
+                                                        <div className="order__products-item-text">
+                                                            <Link className='cart__link' to={`/product/${item.product}`}>
+                                                                <h3 className="order__products-item-text-name">                                                    
+                                                                    {item.name}
+                                                                </h3>
+                                                            </Link>    
+                                                            <p className="order__products-item-text-price">
+                                                                    {item.qty} x {item.price.toLocaleString()} = {(item.qty * item.price).toLocaleString()}
+                                                            </p>   
+                                                        </div> 
+                                                    </div>
                                                 </div>
-                                                <div className="order__products-item-box">
-                                                    <div className="order__products-item-text">
-                                                        <Link className='cart__link' to={`/product/${item.product}`}>
-                                                            <h3 className="order__products-item-text-name">                                                    
-                                                                {item.name}
-                                                            </h3>
-                                                        </Link>    
-                                                        <p className="order__products-item-text-price">
-                                                                {item.qty} x {item.price.toLocaleString()} = {(item.qty * item.price).toLocaleString()}
-                                                        </p>   
-                                                    </div> 
-                                                </div>
-                                            </div>
-                                    ))}
+                                        ))} */}
                                     </div>
                                 </div>
                                 <div className="col l-4">
@@ -131,7 +111,7 @@ function PlaceOrder() {
                                                 </p>
                                                 <p className="order__products-checkout-price-price">
                                                     {/* {cart.itemsPrice = cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0).toLocaleString()}đ */}
-                                                    {cart.cartItems.reduce((init,item) =>init + item.price * item.qty ,0).toLocaleString()}đ
+                                                    {/* {order.orderItems.reduce((init,item) =>init + item.price * item.qty ,0).toLocaleString()}đ */}
                                                 </p>
                                             </div>
                                             <div className="order__products-checkout-price">
@@ -140,7 +120,6 @@ function PlaceOrder() {
                                                 </p>
                                                 <p className="order__products-checkout-price-price">
                                                     50,000đ
-                                                    {/* {cart.shippingPrice = cart.itemsPrice > 1000000 ? (0) :(50000)}đ */}
                                                 </p>
                                             </div>
                                             <div className="order__products-checkout-price">
@@ -156,28 +135,20 @@ function PlaceOrder() {
                                                     Tổng Tiền
                                                 </p>
                                                 <p className="order__products-checkout-price-price">
-                                                    {cart.cartItems.reduce((init,item) =>init + item.price * item.qty ,0).toLocaleString()}đ
+                                                    {/* {order.orderItems.reduce((init,item) =>init + item.price * item.qty ,0).toLocaleString()}đ */}
                                                     {/* {cart.totalPrice = (cart.itemsPrice)}đ */}
-
                                                 </p>
                                             </div>
-                                            <div className="order__products-checkout-button">
-                                                <button disabled={cart.cartItems.length === 0} onClick={handlerOrder} className="order__products-checkout-button-btn">
-                                                    Thanh Toán Ngay
-                                                </button>
-                                            </div>
-                                            {loading && <LoadingBox></LoadingBox>}
-                                            {error && <MessageBox></MessageBox>}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <SliderBottom/>
-                        </div>
+                    </div>
             </div>
             <Footer/>
         </React.Fragment>
     )
 }
 
-export default PlaceOrder
+export default Order

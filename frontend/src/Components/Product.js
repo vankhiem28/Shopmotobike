@@ -35,6 +35,9 @@ function Product() {
       const productList = useSelector((state) => state.productList)
       const {loading, error, products} = productList
 
+      const productNew = products.filter(item=>(item.category === 'Sản phẩm mới'))
+      const productSeller = products.filter(item=>(item.category === 'Phụ kiện khác'))
+
     useEffect(() => {
         dispatch(listProducts());
     }, [])
@@ -68,7 +71,7 @@ function Product() {
                                     :error ? 
                                     <MessageBox variant='danger' >{error}</MessageBox>
                                     :
-                                    products.map(product =>(
+                                    productNew.map(product =>(
                                         <div className="product__item">
                                             <Link className="product__item-router" to={`/product/${product._id}`}>
                                                 <div className="product__item-img">
@@ -94,9 +97,11 @@ function Product() {
                             </Slider>
                         </div>
                         <div className="product__button-view-all">
-                            <button className="product__button-view-all-btn">
-                                Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
-                            </button>
+                            <Link className="product__button-view-all-link" to={'/productsList'}>
+                                <button className="product__button-view-all-btn">
+                                    Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
+                                </button>
+                            </Link>
                         </div>
                         {/* </div> */}
                     {/* </div> */}
@@ -145,9 +150,11 @@ function Product() {
                             </Slider>
                         </div>
                         <div className="product__button-view-all">
-                            <button className="product__button-view-all-btn">
-                                Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
-                            </button>
+                            <Link className="product__button-view-all-link" to={'/productsList'}>
+                                <button className="product__button-view-all-btn">
+                                    Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="product__banner">
@@ -204,7 +211,7 @@ function Product() {
                                     :error ? 
                                     <MessageBox variant='danger' >{error}</MessageBox>
                                     :
-                                    products.map(product =>(
+                                    productSeller.map(product =>(
                                         <div className="product__item">
                                             <Link className="product__item-router" to={`/product/${product._id}`}>
                                                 <div className="product__item-img">
@@ -229,9 +236,11 @@ function Product() {
                             </Slider>
                         </div>
                         <div className="product__button-view-all">
-                            <button className="product__button-view-all-btn">
-                                Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
-                            </button>
+                            <Link className="product__button-view-all-link" to={'/productsList'}>
+                                <button className="product__button-view-all-btn">
+                                    Xem Tất Cả <FaAngleDoubleRight className="product__button-view-all-btn-icon"/>
+                                </button>
+                            </Link>
                         </div>
                     </div>
 

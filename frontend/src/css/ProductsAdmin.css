@@ -1,0 +1,237 @@
+.ProductsAdmin__container {
+    padding-top:107px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.ProductsAdmin__bg {
+    width: 100%;
+    height: 380px;
+    padding-top:380px;
+    background-image: url("https://images.wallpaperscraft.com/image/single/motorcycle_bike_side_view_115358_3840x2400.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.login__bg {
+    background-image: url("https://images.wallpaperscraft.com/image/single/motor_engine_mechanism_156863_1920x1080.jpg");
+}
+
+.ProductsAdmin__bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.ProductsAdmin__bg-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ProductsAdmin__bg-title-text {
+    font-size:3.6rem;
+    color:#fff;
+}
+
+.ProductsAdmin__bg-title-text::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom:-3px;
+    left:0;
+}
+
+.ProductsAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:50px;
+    /* background-color:#ccc; */
+    justify-content: center;
+}
+
+.ProductsAdmin__title {
+    
+}
+
+.ProductsAdmin__title-text {
+    text-transform: uppercase;
+    font-size:2.2rem;
+    position: relative;
+}
+
+.ProductsAdmin__title-text::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color:var(--primary-color);
+    bottom:-6px;
+    left:0;
+}
+
+.ProductsAdmin__form {
+    padding-top:16px;
+}
+
+.ProductsAdmin__form-input {
+
+}
+
+.ProductsAdmin__form-input span {
+    display:block;
+    font-size:2.0rem;
+    padding-top: 16px;
+    padding-bottom: 6px;
+
+}
+
+.ProductsAdmin__input__form-input-ip {
+    padding: 0 10px;
+    font-size: 1.8rem;
+    width:600px;
+    height:44px;
+    display:block;
+    outline-color:var(--primary-color);
+}
+
+.ProductsAdmin__form-button {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 26px;
+}
+
+.ProductsAdmin__form-btn {
+    margin-top: 12px;
+    width: 600px;
+    height: 50px;
+    text-transform: uppercase;
+    color:#fff;
+    background-color: var(--primary-color);
+    font-size: 1.6rem;
+    border: none;
+}
+
+.ProductsAdmin__form-btn:nth-child(2) {
+    background-color: #ccc;
+    color:#000;
+}
+
+
+.ProductsAdmin__form-btn:hover {
+    opacity:0.9;
+}
+
+.login__question {
+    padding-top:10px;
+    font-size:1.1rem;
+}
+
+.login__question-text {
+    display: inline-block;
+}
+
+.login__question-ProductsAdmin {
+    display: inline-block;
+    padding-left: 4px;
+    color:var(--primary-color);
+    cursor: pointer;
+}
+
+
+.login__error-mess {
+    margin-top:22px;
+    text-align: center;
+    color: red;
+}
+
+.ProductsAdmin__table {
+    display:block;
+    margin-top:20px;
+    border-collapse: collapse;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.ProductsAdmin__table td,
+.ProductsAdmin__table th {
+    border: 1px solid #ccc;
+    font-size:1.4rem;
+    text-align: center;
+} 
+
+.ProductsAdmin__table td {
+    padding: 10px 10px;
+
+}
+
+.ProductsAdmin__table th {
+    width: 80px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+
+}
+
+.ProductsAdmin__table-button button {
+    padding:3px 8px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.ProductsAdmin__table-detail td:nth-child(2) {
+    width: 600px;
+}
+
+.ProductsAdmin__table-detail td:nth-child(4) {
+    width: 100px;
+}
+.ProductsAdmin__table-detail td:nth-child(6) {
+    width: 100px;
+}
+.ProductsAdmin__table-button button:hover {
+    cursor: pointer;
+    background-color:rgba(219, 72, 46,0.8)    
+}
+
+.ProductsAdmin__table-name {
+    padding:2px 4px;
+    cursor: pointer;
+}
+
+.ProductsAdmin__button-box {
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.ProductsAdmin__button-tile {
+    text-transform: uppercase;
+}
+
+.ProductsAdmin__button-btn {
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 4px;
+    padding:10px 10px;
+    margin-top:10px;
+    cursor: pointer;
+}
+
+.ProductsAdmin__button-btn:hover {
+    background-color:rgba(219, 72, 46,0.8)
+}

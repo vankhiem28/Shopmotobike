@@ -1,8 +1,9 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import { cartReducer } from './reducers/CartReducers'
-import { productDetailsReducer, productListReducer } from './reducers/ProductReducers'
-import { userRegisterReducer, userSigninReducer } from './reducers/UserReducers'
+import { orderCreateReducer, orderDetailsReducer, orderListReducer, orderMineListReducer } from './reducers/OrderReducers'
+import { productDetailsReducer, productListReducer, productSaveReducer } from './reducers/ProductReducers'
+import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer } from './reducers/UserReducers'
 
 const initialState ={
     userSignin:{
@@ -11,7 +12,7 @@ const initialState ={
     cart:{
         cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')):[],
         shippingAddress: localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {} ,
-        paymentMethod: "Thanh Toán Khi Nhận Hàng"
+        paymentMethod: 'Thanh Toán Khi Nhận Hàng'
     }
 }
 const reducer = combineReducers({
@@ -20,6 +21,13 @@ const reducer = combineReducers({
     cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
+    orderCreate: orderCreateReducer,
+    productSave:productSaveReducer,
+    orderDetails:orderDetailsReducer,
+    orderList:orderListReducer,
+    userDetails:userDetailsReducer,
+    userUpdateProfile:userUpdateProfileReducer,
+    orderMineList: orderMineListReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
