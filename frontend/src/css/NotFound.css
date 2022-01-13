@@ -1,0 +1,57 @@
+.not__found-container {
+    padding-top:107px;
+}
+
+.not__found-contain {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 172px 0;
+}
+
+.not__found-logo {
+
+}
+
+.not__found-logo-text {
+    font-size:20rem;
+    background: -webkit-linear-gradient(var(--primary-color),rgb(241, 142, 76));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not__found-text {
+
+}
+
+.not__found-text-title {
+    font-size:2.6rem;
+    font-weight:400;
+    text-transform:uppercase;
+    color: rgb(235, 118, 23);
+}
+
+.not__found-text-des {
+    padding-top: 10px;
+    font-size:1.6rem;
+    text-align: center;
+    color: rgb(70, 68, 67);
+
+}
+
+.not__found-social {
+    margin-top: 20px;
+    display: flex;
+}   
+
+.not__found-social-logo {
+
+}
+
+.not__found-social-logo-icon {
+    position: relative;
+    margin: 0 8px;
+    font-size:1.6rem;
+    color: rgba(189, 69, 39, 0.9)
+}
+

@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signin } from '../actions/UserActions'
 import LoadingBox from '../Components/LoadingBox'
 import MessageBox from '../Components/MessageBox'
-import { listProducts, saveProduct } from '../actions/ProductActions'
+import { deleteProducts, listProducts, saveProduct } from '../actions/ProductActions'
 
 function ProductsAdmin() {
     const [modalVisible,setModalVisible] = useState(false)
@@ -27,22 +27,24 @@ function ProductsAdmin() {
     const [countInStock,setCountInStock] = useState('')
 
     const productList = useSelector((state)=>state.productList)
-    const {products} = productList
+    const {products,error,loading} = productList
 
-    console.log(products);
-
+    
     const productSave = useSelector((state)=>state.productSave)
-    const {error,loading} = productSave  
-
+    const {error:errorSave,loading:loadingSave,success:successSave} = productSave  
+    
+    const productDelete = useSelector((state)=>state.productDelete)
+    // const {loading:loadingDelete,success:successDelete} = productDelete  
     const dispatch = useDispatch()
-
     useEffect(() => {
-
+        if(successSave) {
+            setModalVisible(false)
+        }
         dispatch(listProducts())
         return () => {
 
         }
-    }, [])
+    }, [successSave])
 
     
     const handlerSubmit = (e) => {
@@ -51,7 +53,6 @@ function ProductsAdmin() {
     }
     
     const openModal = (product) => {
-
         setModalVisible(true)
         setId(product._id)
         setName(product.name)
@@ -65,6 +66,12 @@ function ProductsAdmin() {
         setPrice(product.price)
         setCountInStock(product.countInStock)
     }
+
+
+    const handleDelete = (product) => {
+        dispatch(deleteProducts(product._id));
+    }
+
     return (
         <div>
             <Header/>
@@ -83,12 +90,12 @@ function ProductsAdmin() {
                         {modalVisible &&
                             <div className="row">
                                 <div className="col l-12 ProductsAdmin__flex">
-                                    <form className="ProductsAdmin" >
+                                    <form className="ProductsAdmin" onSubmit={handlerSubmit}>
                                         <div className="ProductsAdmin__title">
                                             <h1 className="ProductsAdmin__title-text">
                                                 Tạo Sản Phẩm
                                             </h1>
-                                            {error && <h1 className="login__error-mess"> Thông tin không hợp lệ </h1> }
+                                            {errorSave && <h1 className="login__error-mess"> Thông tin không hợp lệ </h1> }
                                         </div>
                                         <div className="ProductsAdmin__form">
                                             <div className="ProductsAdmin__form-input">
@@ -133,7 +140,7 @@ function ProductsAdmin() {
                                             </div>                                        
                                         </div>
                                         <div className="ProductsAdmin__form-button">
-                                            <button className="ProductsAdmin__form-btn"onClick= {handlerSubmit}>
+                                            <button className="ProductsAdmin__form-btn" >
                                                {id ? "Sửa Sản Phẩm" : "Tạo Sản Phẩm"} 
                                             </button>
                                             <button className="ProductsAdmin__form-btn"onClick= {()=> setModalVisible(false)}>
@@ -176,7 +183,7 @@ function ProductsAdmin() {
                                         <td>
                                             <div className="ProductsAdmin__table-button">
                                                 <button onClick={()=> openModal(product)}>Sửa</button>
-                                                <button>Xóa</button>
+                                                <button onClick={()=> handleDelete(product)}>Xóa</button>
                                             </div>
                                         </td>
                                     </tr>

@@ -43,7 +43,7 @@ function PlaceOrder() {
 
     useEffect(() => {
         if(success) {
-            history(`/order/${order._id}`)
+            history(`/ordercheck/${order._id}`)
             dispatch({type: ORDER_CREATE_RESET})
         }
     },[dispatch,order,history,success])
@@ -163,7 +163,7 @@ function PlaceOrder() {
                                             </div>
                                             <div className="order__products-checkout-button">
                                                 <button disabled={cart.cartItems.length === 0} onClick={handlerOrder} className="order__products-checkout-button-btn">
-                                                    Thanh Toán Ngay
+                                                    Đặt Hàng
                                                 </button>
                                             </div>
                                             {loading && <LoadingBox></LoadingBox>}

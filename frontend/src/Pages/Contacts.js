@@ -15,7 +15,7 @@ function Contacts() {
                 <div className="contact__bg">
                     <div className="contact__bg-overlay"></div>
                     <div className="contact__bg-title">
-                        <h2 className="contact__bg-title-text">Giỏ Hàng</h2>
+                        <h2 className="contact__bg-title-text">Liên Hệ</h2>
                     </div>
                 </div>
                 <div className="grid wide">

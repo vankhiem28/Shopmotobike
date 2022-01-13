@@ -11,8 +11,10 @@ import PlaceOrder from './Pages/PlaceOrder'
 import ProductsAdmin from './Pages/ProductsAdmin'
 import Contacts from './Pages/Contacts'
 import OrderAdmin from './Pages/OrderAdmin'
-import Order from './Pages/Order'
+import OrderCheck from './Pages/OrderCheck'
 import ProfilesAdmin from './Pages/ProfilesAdmin'
+import NotFound from './Pages/NotFound'
+import AboutUs from './Pages/AboutUs'
 
 import './App.css';
 import {
@@ -23,9 +25,9 @@ import {
 } from "react-router-dom";
 import { useSelector } from 'react-redux'
 function App() {
-  const user =true
-  const cart =useSelector(state=>state.cart)
-  const {cartItems} =cart
+  // const user =true
+  // const cart =useSelector(state=>state.cart)
+  // const {cartItems} =cart
 
 
   return (
@@ -56,12 +58,17 @@ function App() {
           </Route>
           <Route path="/contact" element={<Contacts/>}>
           </Route>
-          <Route path="/order/:id" element={<Order/>}>
+          <Route path="/ordercheck/:id" element={<OrderCheck/>}>
           </Route>
           <Route path="/ordersAdmin" element={<OrderAdmin/>}>
           </Route>
           <Route path="/profile" element={<ProfilesAdmin/>}>
           </Route>
+          <Route path="/404" element={<NotFound/>}>
+          </Route>
+          <Route path="/about" element={<AboutUs/>}>
+          </Route>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Router>
     </div>

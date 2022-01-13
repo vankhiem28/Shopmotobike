@@ -31,7 +31,11 @@ function ProductDetail(props) {
     const productDetails = useSelector(state => state.productDetails)
     const {loading,error,product} = productDetails
 
+    const productList = useSelector((state) => state.productList)
+    const {products} = productList
     
+    const productLQ = products.filter(product => product.category === "Phụ tùng thay thế" )
+
 
     useEffect(()=> {
         dispatch(detailsProducts(productId))
@@ -52,11 +56,9 @@ function ProductDetail(props) {
     const handleBuyNow = () => {
         navigate(`/cart/${productId}?qty=${quantily}`)
     }
-
     return (
         <React.Fragment>
             <Header/>
-
             <div className="productsdetail__container">
                 <div className="grid wide">
                     <div className="productsdetail__nav">
@@ -195,71 +197,21 @@ function ProductDetail(props) {
                                             Sản Phẩm Liên Quan
                                         </h3>
                                     </div>
-                                    <a href="" className="productsdetail__info-involve-link">
-                                        <div className="productsdetail__info-involve-box">
-                                            <img src="https://shop2banh.vn/images/thumbs/2017/03/dia-thang-racing-boy-chinh-hang-truoc-cho-exciter-150-535-slide-products-58d3a2cc30f32.jpg" alt="" className="productsdetail__info-involve-img" />
-                                            <div className="productsdetail__info-involve-text">
-                                                <p className="productsdetail__info-involve-text-name">
-                                                    Đĩa thắng RCB (chính hãng) trước cho Exciter 150
-                                                </p>
-                                                <p className="productsdetail__info-involve-text-price">
-                                                    400.000đ
-                                                </p>
+                                    {productLQ.map(product=>(
+                                        <a href="" className="productsdetail__info-involve-link">
+                                            <div className="productsdetail__info-involve-box">
+                                                <img src={product.image} alt="" className="productsdetail__info-involve-img" />
+                                                <div className="productsdetail__info-involve-text">
+                                                    <p className="productsdetail__info-involve-text-name">
+                                                        {product.name}
+                                                    </p>
+                                                    <p className="productsdetail__info-involve-text-price">
+                                                        {product.price}
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                    <a href="" className="productsdetail__info-involve-link">
-                                        <div className="productsdetail__info-involve-box">
-                                            <img src="https://shop2banh.vn/images/thumbs/2017/03/dia-thang-racing-boy-chinh-hang-truoc-cho-exciter-150-535-slide-products-58d3a2cc30f32.jpg" alt="" className="productsdetail__info-involve-img" />
-                                            <div className="productsdetail__info-involve-text">
-                                                <p className="productsdetail__info-involve-text-name">
-                                                    Đĩa thắng RCB (chính hãng) trước cho Exciter 150
-                                                </p>
-                                                <p className="productsdetail__info-involve-text-price">
-                                                    400.000đ
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="" className="productsdetail__info-involve-link">
-                                        <div className="productsdetail__info-involve-box">
-                                            <img src="https://shop2banh.vn/images/thumbs/2017/03/dia-thang-racing-boy-chinh-hang-truoc-cho-exciter-150-535-slide-products-58d3a2cc30f32.jpg" alt="" className="productsdetail__info-involve-img" />
-                                            <div className="productsdetail__info-involve-text">
-                                                <p className="productsdetail__info-involve-text-name">
-                                                    Đĩa thắng RCB (chính hãng) trước cho Exciter 150
-                                                </p>
-                                                <p className="productsdetail__info-involve-text-price">
-                                                    400.000đ
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="" className="productsdetail__info-involve-link">
-                                        <div className="productsdetail__info-involve-box">
-                                            <img src="https://shop2banh.vn/images/thumbs/2017/03/dia-thang-racing-boy-chinh-hang-truoc-cho-exciter-150-535-slide-products-58d3a2cc30f32.jpg" alt="" className="productsdetail__info-involve-img" />
-                                            <div className="productsdetail__info-involve-text">
-                                                <p className="productsdetail__info-involve-text-name">
-                                                    Đĩa thắng RCB (chính hãng) trước cho Exciter 150
-                                                </p>
-                                                <p className="productsdetail__info-involve-text-price">
-                                                    400.000đ
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="" className="productsdetail__info-involve-link">
-                                        <div className="productsdetail__info-involve-box">
-                                            <img src="https://shop2banh.vn/images/thumbs/2017/03/dia-thang-racing-boy-chinh-hang-truoc-cho-exciter-150-535-slide-products-58d3a2cc30f32.jpg" alt="" className="productsdetail__info-involve-img" />
-                                            <div className="productsdetail__info-involve-text">
-                                                <p className="productsdetail__info-involve-text-name">
-                                                    Đĩa thắng RCB (chính hãng) trước cho Exciter 150
-                                                </p>
-                                                <p className="productsdetail__info-involve-text-price">
-                                                    400.000đ
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    ))}
                                 </div>
                             </div>
                         </div>

@@ -85,3 +85,7 @@ footer::after {
     width: 150px;
 
 }
+
+.footer__link {
+    text-decoration: none;
+}

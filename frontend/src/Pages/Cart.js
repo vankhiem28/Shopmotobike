@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from 'react'
 import { useParams,useLocation, Link,useNavigate } from 'react-router-dom'
-import NumberFormat from 'react-number-format'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
 import SliderBottom from '../Components/SliderBottom'
@@ -9,7 +8,6 @@ import '../css/Grid.css'
 import '../css/Cart.css'
 import { addToCart, removeFromCart } from '../actions/CartActions'
 import { useDispatch, useSelector } from 'react-redux'
-import MessageBox from '../Components/MessageBox'
 
 function Cart(props) {
     const {id} = useParams()
@@ -225,7 +223,7 @@ function Cart(props) {
                                 </div>
                             </div>
                             <SliderBottom/>
-                        </div>
+                    </div>
             </div>
             <Footer/>
         </React.Fragment>

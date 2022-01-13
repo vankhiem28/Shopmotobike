@@ -65,12 +65,25 @@ productRouter.post('/', async (req, res) => {
         product.countInStock=req.body.countInStock
         const updateProduct = await product.save()
         if(updateProduct) {
-            return res.status(201).send({message:'product update',data:newProduct})
+            return res.status(200).send({message:'product update',data:newProduct})
         }
       }
       return res.status(500).send({message:'error in updating product'})
 
   })
+
+productRouter.delete(
+  '/:id',
+  expressAsyncHandler(async (req, res) => {
+    const deletedproduct = await Product.findById(req.params.id);
+    if (deletedproduct) {
+      await deletedproduct.remove();
+      res.send({ message: 'Product Deleted'});
+    } else {
+      res.status(404).send({ message: 'Product Not Found' });
+    }
+  })
+)
 
 
 

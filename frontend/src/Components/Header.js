@@ -57,20 +57,26 @@ function Header() {
                                         <span className="header__list-item-link">Sản phẩm</span>
                                     </li>
                                 </Link>
-                                <li className="header__list-item">
-                                    <span className="header__list-item-link">Tin Tức</span>
-                                </li>
+                                <Link to= "/news">
+                                    <li className="header__list-item">
+                                        <span className="header__list-item-link">Tin Tức</span>
+                                    </li>
+                                </Link>
                                 <Link to= "/contact">
                                     <li className="header__list-item">
                                         <span className="header__list-item-link">Liên Hệ</span>
                                     </li>
                                 </Link>
+                                <Link to= "/about">
                                 <li className="header__list-item">
                                     <span className="header__list-item-link">Về chúng tôi</span>
                                 </li>
-                                <li className="header__list-item">
-                                    <span className="header__list-item-link">Khác</span>
-                                </li>
+                                </Link>
+                                <Link to= "/404">
+                                    <li className="header__list-item">
+                                        <span className="header__list-item-link">Khác</span>
+                                    </li>
+                                </Link>
                             </ul>
                         </div>
                         <div className="header__right">

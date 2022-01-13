@@ -1,0 +1,150 @@
+.about__container {
+    padding-top: 107px;
+}
+.about__bg {
+    width: 100%;
+    height: 380px;
+    padding-top:380px;
+    background-image: url("https://images.wallpaperscraft.com/image/single/motorcycle_helmet_bike_207528_1920x1080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.about__bg-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.about__bg-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about__bg-title-text {
+    font-size:3.6rem;
+    color:#fff;
+}
+
+.about__bg-title-text::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    bottom:-3px;
+    left:0;
+}
+
+.about__contain {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.about__text-title {
+    padding-bottom: 10px;
+}
+
+.about__text-title-text {
+    position: relative;
+    font-weight: 600;
+    font-size:3.0rem;
+    /* text-transform: uppercase; */
+}
+
+.about__text-title-text::after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: -4px;
+    background-color:var(--primary-color);
+}
+
+.about__text-box {
+    margin-top:10px;
+    height:400px;
+    padding-right: 8px;
+    overflow-y: scroll;
+}
+.about__text-box::-webkit-scrollbar {
+    
+    width: 6px;
+    background-color: #ccc;
+}
+
+.about__text-box::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+.about__text-des {
+    line-height:30px;
+    padding: 8px 0;
+    text-align: justify;
+    font-size: 1.6rem;
+}
+
+.about__text-des-hotline {
+    color: var(--primary-color);
+}
+
+.about__image-box {
+    margin-top:10px;
+}
+
+.about__image-slick .slick-slider button {
+    display: none !important;
+}
+
+.about__image-slick {
+    position: relative;
+}
+
+.about__image {
+    /* display:flex !important;
+    justify-content:center; */
+}
+
+.about__image-img {
+    height:400px;
+    width: 100%;
+}
+
+.about__image-button {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    position:absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.about__image-btn {
+    background-color: transparent;
+    border: none;
+    padding:18px 4px;
+    color:#fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.about__image-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.about__image-btn-prev {
+
+}
+
+.about__image-btn-icon {
+    font-size:2.4rem;
+}

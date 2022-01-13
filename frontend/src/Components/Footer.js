@@ -6,6 +6,7 @@ import '../css/Footer.css'
 
 import {FaFacebook,FaInstagram,FaSearchLocation,FaPhoneAlt} from 'react-icons/fa'
 import {FiMail,FiPhone,FiNavigation,FiHeart} from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
@@ -26,16 +27,20 @@ function Footer() {
                                                     Giới thiệu
                                                 </a>
                                             </li>
-                                            <li className="footer__list-list-item">
-                                                <a href="" className="footer__list-list-item-link">
-                                                    Điều khoản
-                                                </a>
-                                            </li>
-                                            <li className="footer__list-list-item">
-                                                <a href="" className="footer__list-list-item-link">
-                                                    Tuyển dụng
-                                                </a>
-                                            </li>
+                                            <Link className="footer__link" to="/404">
+                                                <li className="footer__list-list-item">
+                                                    <a href="" className="footer__list-list-item-link">
+                                                        Điều khoản
+                                                    </a>
+                                                </li>
+                                            </Link>
+                                            <Link className="footer__link" to="/404">
+                                                <li className="footer__list-list-item">
+                                                    <a href="" className="footer__list-list-item-link">
+                                                        Tuyển dụng
+                                                    </a>
+                                                </li>
+                                            </Link>
                                         </ul>
                                     </div>
                                 </div>
@@ -47,11 +52,13 @@ function Footer() {
                                     </div>
                                     <div className="footer__list">
                                         <ul className="footer__list-list">
-                                            <li className="footer__list-list-item">
-                                                <a href="" className="footer__list-list-item-link">
-                                                    Đồ chơi xe máy
-                                                </a>
-                                            </li>
+                                            <Link className="footer__link" to='/productsList'>
+                                                <li className="footer__list-list-item">
+                                                    <a href="" className="footer__list-list-item-link">
+                                                        Đồ chơi xe máy
+                                                    </a>
+                                                </li>
+                                            </Link>
                                             <li className="footer__list-list-item">
                                                 <a href="" className="footer__list-list-item-link">
                                                     Vỏ Bánh xe
@@ -79,12 +86,12 @@ function Footer() {
                                     <div className="footer__list">
                                         <ul className="footer__list-list">
                                             <li className="footer__list-list-item">
-                                                <a href="" className="footer__list-list-item-link">
+                                                <a href="https://www.facebook.com/VNKM28" className="footer__list-list-item-link">
                                                    <FaFacebook className="footer__list-list-item-link-icon"/> Facebook
                                                 </a>
                                             </li>
                                             <li className="footer__list-list-item">
-                                                <a href="" className="footer__list-list-item-link">
+                                                <a href="https://www.facebook.com/VNKM28" className="footer__list-list-item-link">
                                                     <FaInstagram className="footer__list-list-item-link-icon"/> Instagram
                                                 </a>
                                             </li>
